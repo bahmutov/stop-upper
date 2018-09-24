@@ -1,7 +1,7 @@
 {
   "name": "stop-upper",
   "description": "Checks that every file in the given folder is lower case",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
   "bugs": "https://github.com/bahmutov/stop-upper/issues",
   "bin": {
@@ -81,7 +81,9 @@
     "unit": "mocha src/*-spec.js",
     "unused-deps": "dependency-check --unused --no-dev .",
     "stop-upper": "node bin/stop-upper.js -f src --skip excluded",
-    "warn-upper": "node bin/stop-upper.js --warn -f src"
+    "warn-upper": "node bin/stop-upper.js --warn -f src",
+    "semantic-release": "semantic-release",
+    "travis-deploy-once": "travis-deploy-once"
   },
   "devDependencies": {
     "ban-sensitive-files": "1.9.2",
@@ -93,7 +95,9 @@
     "nsp": "3.2.1",
     "pre-git": "3.17.1",
     "prettier-standard": "8.0.1",
-    "standard": "11.0.1"
+    "standard": "11.0.1",
+    "semantic-release": "^15.9.16",
+    "travis-deploy-once": "^5.0.8"
   },
   "dependencies": {
     "debug": "4.0.1",
