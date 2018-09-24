@@ -31,7 +31,7 @@
     }
   },
   "engines": {
-    "node": ">=6"
+    "node": "10.11.0"
   },
   "files": [
     "bin",
@@ -96,8 +96,8 @@
     "pre-git": "3.17.1",
     "prettier-standard": "8.0.1",
     "standard": "11.0.1",
-    "semantic-release": "^15.9.16",
-    "travis-deploy-once": "^5.0.8"
+    "semantic-release": "15.9.16",
+    "travis-deploy-once": "5.0.8"
   },
   "dependencies": {
     "debug": "4.0.1",
