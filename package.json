@@ -4,17 +4,22 @@
   "version": "1.0.0",
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
   "bugs": "https://github.com/bahmutov/stop-upper/issues",
+  "bin": {
+    "stop-upper": "bin/stop-upper.js"
+  },
   "config": {
     "pre-git": {
       "commit-msg": "simple",
       "pre-commit": [
         "npm prune",
         "npm run deps",
+        "npm run warn-upper",
         "npm test",
         "git add src/*.js",
         "npm run ban"
       ],
       "pre-push": [
+        "npm run stop-upper",
         "npm run unused-deps",
         "npm run secure",
         "npm run license",
@@ -29,6 +34,7 @@
     "node": ">=6"
   },
   "files": [
+    "bin",
     "src/*.js",
     "!src/*-spec.js"
   ],
@@ -65,15 +71,17 @@
     "deps": "deps-ok && dependency-check --no-dev .",
     "issues": "git-issues",
     "license": "license-checker --production --onlyunknown --csv",
-    "lint": "standard --verbose --fix src/*.js",
+    "lint": "standard --verbose --fix 'src/*.js' 'bin/*.js'",
     "prelint": "npm run pretty",
     "pretest": "npm run lint",
-    "pretty": "prettier-standard 'src/*.js'",
+    "pretty": "prettier-standard 'src/*.js' 'bin/*.js'",
     "secure": "nsp check",
     "size": "t=\"$(npm pack .)\"; wc -c \"${t}\"; tar tvf \"${t}\"; rm \"${t}\";",
     "test": "npm run unit",
     "unit": "mocha src/*-spec.js",
-    "unused-deps": "dependency-check --unused --no-dev ."
+    "unused-deps": "dependency-check --unused --no-dev .",
+    "stop-upper": "node bin/stop-upper.js -f src --skip excluded",
+    "warn-upper": "node bin/stop-upper.js --warn -f src"
   },
   "devDependencies": {
     "ban-sensitive-files": "1.9.2",
@@ -86,5 +94,11 @@
     "pre-git": "3.17.1",
     "prettier-standard": "8.0.1",
     "standard": "11.0.1"
+  },
+  "dependencies": {
+    "debug": "4.0.1",
+    "globby": "8.0.1",
+    "minimist": "1.2.0",
+    "ramda": "0.25.0"
   }
 }

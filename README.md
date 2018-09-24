@@ -14,10 +14,75 @@
 Requires [Node](https://nodejs.org/en/) version 6 or above.
 
 ```sh
-npm install --save stop-upper
+npm install --save-dev stop-upper
 ```
 
 ## Use
+
+### basic
+
+Assuming all interesting files are in the folders "src" and "bin", I recommend create an NPM run script. Use `--folder` or `-f` to pass the folder(s) to search.
+
+```json
+{
+  "scripts": {
+    "stop-upper": "stop-upper --folder src --folder bin"
+  }
+}
+```
+
+Exits with 1 if there is a file with uppercase somewhere inside the folders. Also checks folder names.
+
+### warn
+
+If you just want to warn on found uppercase names, use `stop-upper --warn <folder>` syntax. Alias `-w`.
+
+### Pre-commit or pre-push hook
+
+If using [pre-git][pre-git] to configure Git hooks, run this tool as a command
+
+```json
+{
+  "config": {
+    "pre-git": {
+      "pre-push": ["npm run stop-upper"]
+    }
+  }
+}
+```
+
+See [package.json](package.json) (note here we have just local script name).
+
+**tip** you can warn on commit hook, while fail in pre-push hook.
+
+[pre-git]: github.com/bahmutov/pre-git#readme
+
+### Commas
+
+You can pass multiple folder names as separate arguments or comma-separated. These are equivalent
+
+```
+stop-upper --folder foo --folder bar
+stop-upper -f foo -f bar
+stop-upper -f foo,bar
+```
+
+### Debugging
+
+You can see additional diagnostic output from this command by running with environment variable `DEBUG=stop-upper`
+
+### CI
+
+On CI run the tool after install, for example see [.travis.yml](.travis.yml),
+(note here we have just local script name).
+
+```
+- npm run stop-upper
+```
+
+## Related
+
+- [stop-only](https://github.com/bahmutov/stop-only)
 
 ### Small print
 
