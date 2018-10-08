@@ -100,7 +100,7 @@
     "travis-deploy-once": "5.0.9"
   },
   "dependencies": {
-    "debug": "4.0.1",
+    "debug": "4.1.0",
     "globby": "8.0.1",
     "minimist": "1.2.0",
     "ramda": "0.25.0"
