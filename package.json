@@ -102,7 +102,7 @@
   "dependencies": {
     "debug": "4.1.1",
     "globby": "8.0.2",
-    "minimist": "1.2.0",
+    "minimist": "1.2.5",
     "ramda": "0.26.1"
   }
 }
