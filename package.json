@@ -96,7 +96,7 @@
     "pre-git": "3.17.1",
     "prettier-standard": "8.0.1",
     "standard": "11.0.1",
-    "semantic-release": "15.14.0",
+    "semantic-release": "24.1.3",
     "travis-deploy-once": "5.0.11"
   },
   "dependencies": {
